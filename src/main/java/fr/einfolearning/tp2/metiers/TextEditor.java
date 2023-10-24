@@ -36,9 +36,9 @@ public class TextEditor {
      * Mode yank
      * Permet de coller l'élément courant de la file circulaire à la position
      * courante du curseur
-     *
+     * <p>
      * Le mot inséré est marqué avec les curseurs yankLeft(yL) et yankRight(yR)
-     *
+     * <p>
      * Dans ce mode on peut faire  suivre un yank de plusieurs  yankPop
      *
      * @throws IllegalAccessException
