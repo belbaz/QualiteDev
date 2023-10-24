@@ -1,0 +1,7 @@
+TP1 Qualité de développement
+Benjamin Elbaz
+
+1]
+1) git clone https://github.com/bouchaiblemaire/tp1_junit_etudiant.git
+2) java -version
+3) git checkout -b step1_decouverte_application

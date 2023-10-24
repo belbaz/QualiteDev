@@ -11,34 +11,40 @@ import fr.einfolearning.tp2.metiers.exceptions.EmacsKillRingOverflowException;
 public class App {
 
     public static void main(String[] args) throws EmacsKillRingOverflowException {
-        // A completer
 
-        // Créer une instance de TextEditor en lui passant une chaîne initiale
+
+        //instanciation,
         TextEditor textEditor = new TextEditor("Ceci est un exemple de texte pour textEditor");
+        TextBuffer textBuffer = new TextBuffer("Ceci est un exemple de texte pour textBuffer");
 
         System.out.println("Contenu initial du texte : " + textEditor.getBuffer());
 
-        textEditor.setCursor(5); // Déplace le curseur à la position 5
-        textEditor.setMark(15); // Marque la fin de la zone à copier
+        //copie d’une zone de texte,
+        textEditor.setCursor(5); //Curseur a la position 5
+        textEditor.setMark(10); //fin de la zone au caracteres 10
         textEditor.killRingBackup(); // Copie la zone marquée dans le kill ring
 
-        // Afficher le contenu après la copie
-        System.out.println("Contenu après la copie : " + textEditor.getBuffer());
-        
-                // Découpe d'une zone
-        textEditor.setCursor(8); // Déplace le curseur à la position 8
-        textEditor.setMark(20); // Marque la fin de la zone à découper
-        textEditor.killSection(); // Découpe la zone marquée
+        System.out.println("Contenu apres copie : " + textEditor.getBuffer());
 
-        // Afficher le contenu après la découpe
-        System.out.println("Contenu après la découpe : " + textEditor.getBuffer());
+        //découpe d’une zone
+        textBuffer.del(0,14);
+        System.out.println("Contenu apres suppression : " + textBuffer);
 
-        // Insertions successives au même endroit
-        textEditor.setCursor(10); // Déplace le curseur à la position 10
+        //insertions successives au même endroit
+        textBuffer.ins("texte changer ",0);
+        System.out.println("Contenu apres insertions : " + textBuffer);
 
 
-        // Afficher le contenu après les insertions
-        System.out.println("Contenu après les insertions : " + textEditor.getBuffer());
+
+        //Utilise yankPop pour coller la section copiée à la nouvelle position
+        try {
+            textEditor.yankPop();
+        } catch (IllegalAccessException e) {
+            System.out.println("Erreur lors de la coller : " + e.getMessage());
+        }
+
+        // Affiche le contenu du tampon de texte pour vérifier le résultat
+        System.out.println("Contenu après yankPop : " + textEditor.getBuffer());
 
     }
 }
