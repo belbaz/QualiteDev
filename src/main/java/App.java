@@ -2,17 +2,12 @@
 // Utilisation nominale des classes td3.Buffer, Killring et td3.Editor
 //
 ////////////////////////////////////////////////////////////////
-
-import fr.einfolearning.tp2.metiers.EmacsKillRing;
 import fr.einfolearning.tp2.metiers.TextBuffer;
 import fr.einfolearning.tp2.metiers.TextEditor;
 import fr.einfolearning.tp2.metiers.exceptions.EmacsKillRingOverflowException;
-
 public class App {
 
     public static void main(String[] args) throws EmacsKillRingOverflowException {
-
-
         //instanciation,
         TextEditor textEditor = new TextEditor("Ceci est un exemple de texte pour textEditor");
         TextBuffer textBuffer = new TextBuffer("Ceci est un exemple de texte pour textBuffer");
@@ -31,9 +26,8 @@ public class App {
         System.out.println("Contenu apres suppression : " + textBuffer);
 
         //insertions successives au même endroit
-        textBuffer.ins("texte changer ",0);
+        textBuffer.insert("texte changer ",0);
         System.out.println("Contenu apres insertions : " + textBuffer);
-
 
 
         //Utilise yankPop pour coller la section copiée à la nouvelle position

@@ -56,7 +56,7 @@ public class TextEditor {
         // write into the buffer and store its position
         yankLeft = cursor;
         yankRight = cursor + s.length();
-        buffer.ins(s, yankLeft);
+        buffer.insert(s, yankLeft);
     }
 
 
@@ -80,7 +80,7 @@ public class TextEditor {
         emacsKillring.rotateFwd();
         s = emacsKillring.currentElt();
         buffer.del(yankLeft, yankRight);
-        buffer.ins(s, yankLeft);
+        buffer.insert(s, yankLeft);
     }
 
 

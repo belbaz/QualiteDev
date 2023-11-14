@@ -19,7 +19,7 @@ public class TextBuffer {
 
 
     // insert s from position in the buffer
-    public void ins(String s, int position) {
+    public void insert(String s, int position) {
         if ((position >= 0) && (position < sb.length()))
             sb.insert(position, s);
     }
