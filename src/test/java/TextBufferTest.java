@@ -17,6 +17,23 @@ public class TextBufferTest {
         TextBuffer textBuffer = new TextBuffer("ceci est un d'insertion");
         textBuffer.insert("test ",12);
         Assertions.assertEquals("ceci est un test d'insertion", textBuffer.toString());
+
+        // Test insertion au début du texte
+        TextBuffer textBuffer1 = new TextBuffer("ceci est un d'insertion");
+        textBuffer1.insert("test ", 0);
+        Assertions.assertEquals("test ceci est un d'insertion", textBuffer1.toString());
+
+        // Test insertion à la fin du texte
+        TextBuffer textBuffer2 = new TextBuffer("ceci est un d'insertion");
+        textBuffer2.insert(" test", textBuffer2.maxP());
+        Assertions.assertEquals("ceci est un d'insertion", textBuffer2.toString());
+
+
+
+        // Test insertion plus petit que la position
+        TextBuffer textBuffer4 = new TextBuffer("ceci est un d'insertion");
+        textBuffer4.insert(" test ", -12);
+        Assertions.assertEquals("ceci est un d'insertion", textBuffer4.toString());
     }
 
     @Test
@@ -61,10 +78,47 @@ public class TextBufferTest {
     }
 
     @Test
+    public void testSubstringNegative() {
+        TextBuffer textBuffer = new TextBuffer("Hello, World!");
+        Assertions.assertEquals("Hello, World", textBuffer.substr(-7, 12));
+    }
+
+    @Test
+    public void testSubstringNegative2() {
+        TextBuffer textBuffer = new TextBuffer("Hello, World!");
+        Assertions.assertEquals("", textBuffer.substr(-5, -3));
+    }
+
+    @Test
+    public void testSubstringMax() {
+        TextBuffer textBuffer = new TextBuffer("Hello, World!");
+        Assertions.assertEquals("World!", textBuffer.substr(7, 25));
+    }
+    @Test
+    public void testSubstringMax2() {
+        TextBuffer textBuffer = new TextBuffer("Hello, World!");
+        Assertions.assertEquals("", textBuffer.substr(70, 25));
+    }
+
+
+    @Test
     public void testMaxP() {
         TextBuffer textBuffer = new TextBuffer("ceci est un test de MaxP");
         int maxLength = textBuffer.maxP();
         Assertions.assertEquals(24, maxLength);
     }
 
+    @Test
+    public void testDelWithNegativeFrom() {
+        TextBuffer textBuffer = new TextBuffer("Example Text");
+        textBuffer.del(-5, 10);
+        Assertions.assertEquals("xt", textBuffer.toString());
+    }
+
+    @Test
+    public void testDelWithExcessiveFrom() {
+        TextBuffer textBuffer = new TextBuffer("Example Text");
+        textBuffer.del(15, 20);
+        Assertions.assertEquals("Example Text", textBuffer.toString());
+    }
 }
