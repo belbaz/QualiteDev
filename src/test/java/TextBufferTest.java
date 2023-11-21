@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class TextBufferTest {
 
+    // Teste la méthode toString de TextBuffer
     @Test
     public void testString(){
         TextBuffer textBuffer = new TextBuffer("test string");
@@ -12,6 +13,7 @@ public class TextBufferTest {
         Assertions.assertEquals("test string", textBuffer.toString());
     }
 
+    // Teste la méthode insert de TextBuffer
     @Test
     public void testInsert(){
         TextBuffer textBuffer = new TextBuffer("ceci est un d'insertion");
@@ -28,21 +30,20 @@ public class TextBufferTest {
         textBuffer2.insert(" test", textBuffer2.maxP());
         Assertions.assertEquals("ceci est un d'insertion", textBuffer2.toString());
 
-
-
         // Test insertion plus petit que la position
         TextBuffer textBuffer4 = new TextBuffer("ceci est un d'insertion");
         textBuffer4.insert(" test ", -12);
         Assertions.assertEquals("ceci est un d'insertion", textBuffer4.toString());
     }
 
+    // Teste la méthode del de TextBuffer
     @Test
     public void testDel(){
         TextBuffer textBuffer = new TextBuffer("ceci est un test test de suppression");
         textBuffer.del(12,17);
         Assertions.assertEquals("ceci est un test de suppression", textBuffer.toString());
     }
-
+    // Teste la méthode del de TextBuffer avec une position négative sur le premier parametre de la fonction
     @Test
     public void testDelNegatif(){
         TextBuffer textBuffer = new TextBuffer("ceci est un test de suppression");
@@ -50,6 +51,7 @@ public class TextBufferTest {
         Assertions.assertEquals("ceci est un test de suppression", textBuffer.toString());
     }
 
+    // Teste la méthode del de TextBuffer avec une position négative sur le deuxieme parametre de la fonction
     @Test
     public void testDelNegatif2(){
         TextBuffer textBuffer = new TextBuffer("ceci est un test de suppression");
@@ -57,6 +59,7 @@ public class TextBufferTest {
         Assertions.assertEquals("ceci est un test de suppression", textBuffer.toString());
     }
 
+    // Teste la méthode del de TextBuffer avec une position excessive
     @Test
     public void testDelMaxP(){
         TextBuffer textBuffer = new TextBuffer("ceci est un test de suppression");
@@ -64,6 +67,7 @@ public class TextBufferTest {
         Assertions.assertEquals("ceci", textBuffer.toString());
     }
 
+    // Teste la méthode del de TextBuffer avec une position excessive dans les deux parametres de la fonction
     @Test
     public void testDelMaxP2(){
         TextBuffer textBuffer = new TextBuffer("ceci est un test de suppression");
@@ -71,36 +75,42 @@ public class TextBufferTest {
         Assertions.assertEquals("ceci est un test de suppression", textBuffer.toString());
     }
 
+    // Teste la méthode substr de TextBuffer
     @Test
     public void testSubstring() {
         TextBuffer textBuffer = new TextBuffer("Hello, World!");
         Assertions.assertEquals("World", textBuffer.substr(7, 12));
     }
 
+    // Teste la méthode substr de TextBuffer avec une position négative
     @Test
     public void testSubstringNegative() {
         TextBuffer textBuffer = new TextBuffer("Hello, World!");
         Assertions.assertEquals("Hello, World", textBuffer.substr(-7, 12));
     }
 
+    // Teste la méthode substr de TextBuffer avec une position négative dans les deux parametres de la fonction
     @Test
     public void testSubstringNegative2() {
         TextBuffer textBuffer = new TextBuffer("Hello, World!");
         Assertions.assertEquals("", textBuffer.substr(-5, -3));
     }
 
+    // Teste la méthode substr de TextBuffer avec une position excessive pour le deuxieme parametre de la fonction
     @Test
     public void testSubstringMax() {
         TextBuffer textBuffer = new TextBuffer("Hello, World!");
         Assertions.assertEquals("World!", textBuffer.substr(7, 25));
     }
+
+    // Teste la méthode substr de TextBuffer avec une position excessive pour le premier parametre de la fonction
     @Test
     public void testSubstringMax2() {
         TextBuffer textBuffer = new TextBuffer("Hello, World!");
         Assertions.assertEquals("", textBuffer.substr(70, 25));
     }
 
-
+    // Teste la méthode maxP de TextBuffer
     @Test
     public void testMaxP() {
         TextBuffer textBuffer = new TextBuffer("ceci est un test de MaxP");
@@ -108,6 +118,7 @@ public class TextBufferTest {
         Assertions.assertEquals(24, maxLength);
     }
 
+    // Teste la méthode del de TextBuffer avec une position négative
     @Test
     public void testDelWithNegativeFrom() {
         TextBuffer textBuffer = new TextBuffer("Example Text");
@@ -115,6 +126,7 @@ public class TextBufferTest {
         Assertions.assertEquals("xt", textBuffer.toString());
     }
 
+    // Teste la méthode del de TextBuffer avec une position excessive
     @Test
     public void testDelWithExcessiveFrom() {
         TextBuffer textBuffer = new TextBuffer("Example Text");

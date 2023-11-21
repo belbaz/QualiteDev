@@ -3,6 +3,7 @@ package fr.einfolearning.tp2.metiers;///////////////////////////////////////////
 import fr.einfolearning.tp2.metiers.exceptions.EmacsKillRingOverflowException;
 
 import java.lang.IllegalAccessException;
+import java.lang.reflect.Field;
 
 /**
  * Classe TextEditor simulant un éditeur Emacs
@@ -11,7 +12,7 @@ import java.lang.IllegalAccessException;
 public class TextEditor {
 
     private TextBuffer buffer;     // text buffer
-    private EmacsKillRing emacsKillring; // killring
+    public EmacsKillRing emacsKillring; // killring
     private int cursor, mark;   // cursor and mark position
 
     private boolean yankMode;   // true if yankpop can be called
@@ -156,5 +157,7 @@ public class TextEditor {
     public int getYankRight() {
         return yankRight;
     }
+
+    public EmacsKillRing getEmacsKillRing() {return emacsKillring;}
 }
 
