@@ -72,6 +72,7 @@ public class TextEditor {
      */
     public void yankPop() throws IllegalAccessException {
         String s;
+        System.out.println("test");
         if (!yankMode) // throw exception if not in yank mode
             throw (new IllegalAccessException(
                     "Yankpop without yank not allowed"));
@@ -82,6 +83,7 @@ public class TextEditor {
         s = emacsKillring.currentElt();
         buffer.del(yankLeft, yankRight);
         buffer.insert(s, yankLeft);
+        System.out.println("test2");
     }
 
 
