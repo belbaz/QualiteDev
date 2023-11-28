@@ -1,0 +1,16 @@
+Benjamin Elbaz Nayru
+
+Question 1
+
+1) si on appelle la méthode yankPop seule une Exception est lever : Yankpop without yank not allowed
+2) Si yank est appelé précédemment, yankPop fera tourner le contenu de emacsKillRing, supprimera la section marquée dans le buffer, puis y insérera le contenu du prochain élément dans emacsKillRing.
+3) les méthodes ins, del, et currentElt seront appelées une fois chacune.
+4) L'ordre des appels serait le suivant :
+
+    currentElt, emacsKillRing, del, insert
+
+
+Question 2
+
+1) les objet qui doivent etre mocker sont :  EmacsKillRing
+2) les comportements qui doivent etre simuler sont : EmacsKillRing pour qu'il retourne une valeur attendue lors de l'appel de yankPop.
