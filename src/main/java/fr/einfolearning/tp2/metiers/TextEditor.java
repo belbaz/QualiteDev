@@ -11,7 +11,7 @@ import java.lang.reflect.Field;
  */
 public class TextEditor {
 
-    private TextBuffer buffer;     // text buffer
+    public TextBuffer buffer;     // text buffer
     public EmacsKillRing emacsKillring; // killring
     private int cursor, mark;   // cursor and mark position
 
