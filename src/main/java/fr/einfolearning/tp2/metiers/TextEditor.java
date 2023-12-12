@@ -40,7 +40,7 @@ public class TextEditor {
      * <p>
      * Le mot inséré est marqué avec les curseurs yankLeft(yL) et yankRight(yR)
      * <p>
-     * Dans ce mode on peut faire  suivre un yank de plusieurs  yankPop
+     * Dans ce mode on peut faire  suivre un yank de plusieurs yankPop
      *
      * @throws IllegalAccessException
      */
@@ -72,7 +72,7 @@ public class TextEditor {
      */
     public void yankPop() throws IllegalAccessException {
         String s;
-        System.out.println("test");
+        System.out.println("test start yankPop function");
         if (!yankMode) // throw exception if not in yank mode
             throw (new IllegalAccessException(
                     "Yankpop without yank not allowed"));
@@ -83,7 +83,7 @@ public class TextEditor {
         s = emacsKillring.currentElt();
         buffer.del(yankLeft, yankRight);
         buffer.insert(s, yankLeft);
-        System.out.println("test2");
+        System.out.println("test end yankPop function");
     }
 
 
@@ -109,12 +109,14 @@ public class TextEditor {
      * @throws EmacsKillRingOverflowException
      */
     public void killSection() throws EmacsKillRingOverflowException {
+        System.out.println("KillSection Start");
         yankMode = false;
         killRingBackup();
         buffer.del(Math.min(cursor, mark),
                 Math.max(cursor, mark));
         cursor = Math.min(cursor, mark);
         mark = cursor;
+        System.out.println("KillSection End");
     }
 
     public String getBuffer() {
@@ -161,5 +163,8 @@ public class TextEditor {
     }
 
     public EmacsKillRing getEmacsKillRing() {return emacsKillring;}
+
+
+
 }
 

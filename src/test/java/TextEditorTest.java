@@ -233,4 +233,11 @@ public class TextEditorTest {
             killRing.add("test supplémentaire");
         });
     }
+
+    @Test
+    public void testSetEmacsKillring(){
+        TextEditor testEditor = new TextEditor("Test");
+        EmacsKillRing testEmacs = new EmacsKillRing();
+
+    }
 }

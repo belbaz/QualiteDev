@@ -2,17 +2,18 @@ import fr.einfolearning.tp2.metiers.EmacsKillRing;
 import fr.einfolearning.tp2.metiers.TextBuffer;
 import fr.einfolearning.tp2.metiers.TextEditor;
 import fr.einfolearning.tp2.metiers.exceptions.EmacsKillRingOverflowException;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
 
-public class EditorTest {
+public class MockTestEditor {
 
-    // Test d'un appel isolé de la méthode yankPop
+    // Teste l'enchaînement de la méthode yank suivi de yankPop avec des mocks
+    // les mocks remplace les vrai objets yank et yankPop par des objets simulé
     @Test
-    void testYankPopIsolated() throws IllegalAccessException, EmacsKillRingOverflowException {
+    void testMockYankandYankPop() throws IllegalAccessException, EmacsKillRingOverflowException {
         // Créer un mock de l'objet EmacsKillRing et TextBuffer
         EmacsKillRing mockTestEmacs = mock(EmacsKillRing.class);
+        EmacsKillRing mockEmacsKillRing = mock(EmacsKillRing.class);
         TextBuffer mockTextBuffer = mock(TextBuffer.class);
 
         // Créer une instance de TextEditor avec le mock
@@ -36,6 +37,34 @@ public class EditorTest {
         // Vérification que la méthode del est appelée avec les arguments appropriés
         verify(mockTextBuffer, times(1)).del(anyInt(), anyInt()); // Vérifie l'appel de del une fois avec n'importe quelles positions
         verify(mockTextBuffer, times(2)).insert(eq("Mocked Yank Content"), anyInt()); // Vérifie l'appel de insert une fois avec le contenu simulé et n'importe quelle position
+        //test de la methode currentElt appelé dans yank et yankPop
+        verify(mockTestEmacs,  times(2)).currentElt();
+    }
 
+    @Test
+    void TestMockKillSection() throws EmacsKillRingOverflowException {
+        EmacsKillRing mockTestEmacs = mock(EmacsKillRing.class);
+        EmacsKillRing mockEmacsKillRing = mock(EmacsKillRing.class);
+        TextBuffer mockTextBuffer = mock(TextBuffer.class);
+
+        // Créer une instance de TextEditor avec le mock
+        TextEditor textEditor = new TextEditor("Test");
+
+        // Appelez la méthode killSection
+        try {
+            textEditor.emacsKillring = mockEmacsKillRing;
+            textEditor.buffer = mockTextBuffer;
+            textEditor.killSection();
+        } catch (EmacsKillRingOverflowException e) {
+            System.out.println("Erreur : "+e);
+            // Gérer l'exception si nécessaire
+        }
+
+        // Utilisez Mockito pour vérifier que les méthodes appropriées ont été appelées avec les arguments corrects
+        verify(mockTextBuffer, times(1)).del(anyInt(), anyInt());
+        verify(mockTextBuffer, times(1)).substr(anyInt(), anyInt()); // Vérifiez l'appel à substr
+
+        // Vérifiez que la méthode add de emacsKillRing n'est PAS appelée ici
+         verify(mockEmacsKillRing, never()).add("");
     }
 }

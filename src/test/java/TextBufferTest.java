@@ -1,4 +1,7 @@
+import fr.einfolearning.tp2.metiers.EmacsKillRing;
 import fr.einfolearning.tp2.metiers.TextBuffer;
+import fr.einfolearning.tp2.metiers.TextEditor;
+import fr.einfolearning.tp2.metiers.exceptions.EmacsKillRingOverflowException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -132,5 +135,23 @@ public class TextBufferTest {
         TextBuffer textBuffer = new TextBuffer("Example Text");
         textBuffer.del(15, 20);
         Assertions.assertEquals("Example Text", textBuffer.toString());
+    }
+
+    @Test
+    void testSetEmacsKillringAndSetBuffer() {
+        // Créer une instance de TextEditor
+        TextEditor textEditor = new TextEditor("Test");
+
+        // Créer un nouveau EmacsKillRing et TextBuffer
+        EmacsKillRing emacsKillRing = new EmacsKillRing();
+        TextBuffer textBuffer = new TextBuffer("Initial Buffer Content");
+
+        // Appeler les méthodes setEmacsKillring et setBuffer
+        textEditor.emacsKillring = emacsKillRing;
+        textEditor.buffer = textBuffer;
+
+        // Vérifier que les attributs de TextEditor ont été mis à jour correctement
+        Assertions.assertEquals(emacsKillRing, textEditor.getEmacsKillRing());
+        Assertions.assertEquals(textBuffer, textEditor.getTextBuffer());
     }
 }
