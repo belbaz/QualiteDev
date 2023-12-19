@@ -14,7 +14,7 @@ import java.nio.BufferOverflowException;
  */
 public class EmacsKillRing {
 
-    private LinkedList<String> block;
+    public LinkedList<String> block;
     private int entry;
 
     // MAX SIZE of the emacs kill ring that were previously killed

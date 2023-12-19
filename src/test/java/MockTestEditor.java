@@ -13,7 +13,6 @@ public class MockTestEditor {
     void testMockYankandYankPop() throws IllegalAccessException, EmacsKillRingOverflowException {
         // Créer un mock de l'objet EmacsKillRing et TextBuffer
         EmacsKillRing mockTestEmacs = mock(EmacsKillRing.class);
-        EmacsKillRing mockEmacsKillRing = mock(EmacsKillRing.class);
         TextBuffer mockTextBuffer = mock(TextBuffer.class);
 
         // Créer une instance de TextEditor avec le mock
@@ -43,7 +42,6 @@ public class MockTestEditor {
 
     @Test
     void TestMockKillSection() throws EmacsKillRingOverflowException {
-        EmacsKillRing mockTestEmacs = mock(EmacsKillRing.class);
         EmacsKillRing mockEmacsKillRing = mock(EmacsKillRing.class);
         TextBuffer mockTextBuffer = mock(TextBuffer.class);
 

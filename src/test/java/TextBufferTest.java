@@ -5,6 +5,8 @@ import fr.einfolearning.tp2.metiers.exceptions.EmacsKillRingOverflowException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+
 
 public class TextBufferTest {
 
@@ -22,7 +24,6 @@ public class TextBufferTest {
         TextBuffer textBuffer = new TextBuffer("ceci est un d'insertion");
         textBuffer.insert("test ",12);
         Assertions.assertEquals("ceci est un test d'insertion", textBuffer.toString());
-
         // Test insertion au début du texte
         TextBuffer textBuffer1 = new TextBuffer("ceci est un d'insertion");
         textBuffer1.insert("test ", 0);

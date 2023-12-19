@@ -27,6 +27,7 @@ public class TextEditorTest {
     void testYank() throws IllegalAccessException, EmacsKillRingOverflowException {
         // État initial
         Assertions.assertFalse(textEditor.isYankMode());
+//        Assertions.assertThrows(textEditor.isYankMode()).isFalse();
         Assertions.assertEquals(-1, textEditor.getYankLeft());
         Assertions.assertEquals(-1, textEditor.getYankRight());
 
@@ -74,30 +75,6 @@ public class TextEditorTest {
 
         // Exécution de la commande yankPop
         textEditor.yankPop();
-
-//        // Validation de l'état yank après le premier yankPop
-//        Assertions.assertTrue(textEditor.isYankMode());
-//        Assertions.assertEquals(0, textEditor.getYankLeft());
-//        Assertions.assertEquals("Second Yank Text".length()-1, textEditor.getYankRight());
-
-//        // Exécution d'un deuxième yankPop
-//        textEditor.yankPop();
-//
-//        // Validation de l'état yank après le deuxième yankPop
-//        Assertions.assertTrue(textEditor.isYankMode());
-//        Assertions.assertEquals(0, textEditor.getYankLeft());
-//        Assertions.assertEquals("Third Yank Text".length(), textEditor.getYankRight());
-//
-//        // Exécution d'un troisième yankPop
-//        textEditor.yankPop();
-//
-//        // Validation de l'état yank après le troisième yankPop
-//        Assertions.assertFalse(textEditor.isYankMode());
-//        Assertions.assertEquals(-1, textEditor.getYankLeft());
-//        Assertions.assertEquals(-1, textEditor.getYankRight());
-//
-//        //Tentative de yankPop sans contenu dans le kill ring
-//        Assertions.assertThrows(IllegalAccessException.class, () -> textEditor.yankPop());
     }
 
     @Test
